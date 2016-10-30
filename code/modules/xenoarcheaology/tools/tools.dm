@@ -4,7 +4,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "locator"
 	item_state = "locator"
-	w_class = ITEMSIZE_SMALL
+	//w_class = ITEMSIZE_SMALL
 
 /obj/item/device/gps/attack_self(var/mob/user as mob)
 	var/turf/T = get_turf(src)
@@ -15,7 +15,7 @@
 	desc = "A coiled metallic tape used to check dimensions and lengths."
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "measuring"
-	w_class = ITEMSIZE_SMALL
+	//w_class = ITEMSIZE_SMALL
 
 /obj/item/weapon/storage/bag/fossils
 	name = "Fossil Satchel"
@@ -23,10 +23,10 @@
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "satchel"
 	slot_flags = SLOT_BELT | SLOT_POCKET
-	w_class = ITEMSIZE_NORMAL
+	//w_class = ITEMSIZE_NORMAL
 	storage_slots = 50
-	max_storage_space = ITEMSIZE_COST_NORMAL * 50
-	max_w_class = ITEMSIZE_NORMAL
+	//max_storage_space = ITEMSIZE_COST_NORMAL * 50
+	//max_w_class = ITEMSIZE_NORMAL
 	can_hold = list(/obj/item/weapon/fossil)
 
 /obj/item/weapon/storage/box/samplebags
@@ -46,7 +46,7 @@
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "flashgun"
 	item_state = "lampgreen"
-	w_class = ITEMSIZE_SMALL
+	//w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
 
 	var/last_scan_time = 0
@@ -67,7 +67,7 @@
 
 		if(master_controller) //Sanity check due to runtimes ~Z
 			for(var/A in master_controller.artifact_spawning_turfs)
-				var/turf/simulated/mineral/T = A
+				var/turf/closed/mineral/T = A
 				if(T.density && T.artifact_find)
 					if(T.z == cur_turf.z)
 						var/cur_dist = get_dist(cur_turf, T) * 2
@@ -78,7 +78,7 @@
 					master_controller.artifact_spawning_turfs.Remove(T)
 
 			for(var/A in master_controller.digsite_spawning_turfs)
-				var/turf/simulated/mineral/T = A
+				var/turf/closed/mineral/T = A
 				if(T.density && T.finds && T.finds.len)
 					if(T.z == cur_turf.z)
 						var/cur_dist = get_dist(cur_turf, T) * 2
@@ -102,7 +102,7 @@
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "crap"
 	item_state = "analyzer"
-	w_class = ITEMSIZE_SMALL
+	//w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
 	var/list/positive_locations = list()
 	var/datum/depth_scan/current
@@ -119,8 +119,8 @@
 /obj/item/device/depth_scanner/proc/scan_atom(var/mob/user, var/atom/A)
 	user.visible_message("<span class='notice'>\The [user] scans \the [A], the air around them humming gently.</span>")
 
-	if(istype(A, /turf/simulated/mineral))
-		var/turf/simulated/mineral/M = A
+	if(istype(A, /turf/closed/mineral))
+		var/turf/closed/mineral/M = A
 		if((M.finds && M.finds.len) || M.artifact_find)
 
 			//create a new scanlog entry
@@ -233,10 +233,10 @@
 
 /obj/item/device/beacon_locator/New()
 	..()
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 /obj/item/device/beacon_locator/Destroy()
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	..()
 
 /obj/item/device/beacon_locator/process()

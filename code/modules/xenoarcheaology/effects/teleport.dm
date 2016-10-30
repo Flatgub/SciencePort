@@ -9,15 +9,19 @@
 		if (user.buckled)
 			user.buckled.unbuckle_mob()
 
-		var/datum/effect/effect/system/spark_spread/sparks = new /datum/effect/effect/system/spark_spread()
-		sparks.set_up(3, 0, get_turf(user))
-		sparks.start()
 
-		user.Move(pick(trange(50, get_turf(holder))))
+		new /obj/effect/particle_effect/sparks(get_turf(user))
 
-		sparks = new /datum/effect/effect/system/spark_spread()
-		sparks.set_up(3, 0, user.loc)
-		sparks.start()
+		//var/datum/effect/effect/system/spark_spread/sparks = new /datum/effect/effect/system/spark_spread()
+		//sparks.set_up(3, 0, get_turf(user))
+		//sparks.start()
+
+		user.Move(pick(range(50, get_turf(holder))))
+
+		new /obj/effect/particle_effect/sparks(get_turf(user))
+		//sparks = new /datum/effect/effect/system/spark_spread()
+		//sparks.set_up(3, 0, user.loc)
+		//sparks.start()
 
 /datum/artifact_effect/teleport/DoEffectAura()
 	if(holder)
@@ -29,14 +33,19 @@
 				if(M.buckled)
 					M.buckled.unbuckle_mob()
 
-				var/datum/effect/effect/system/spark_spread/sparks = new /datum/effect/effect/system/spark_spread()
-				sparks.set_up(3, 0, get_turf(M))
-				sparks.start()
+				new /obj/effect/particle_effect/sparks(get_turf(M))
 
-				M.Move(pick(trange(50, T)))
-				sparks = new /datum/effect/effect/system/spark_spread()
-				sparks.set_up(3, 0, M.loc)
-				sparks.start()
+				//var/datum/effect/effect/system/spark_spread/sparks = new /datum/effect/effect/system/spark_spread()
+				//sparks.set_up(3, 0, get_turf(M))
+				//sparks.start()
+
+				M.Move(pick(range(50, T)))
+
+				new /obj/effect/particle_effect/sparks(get_turf(M))
+
+				//sparks = new /datum/effect/effect/system/spark_spread()
+				//sparks.set_up(3, 0, M.loc)
+				//sparks.start()
 
 /datum/artifact_effect/teleport/DoEffectPulse()
 	if(holder)
@@ -48,11 +57,15 @@
 				if(M.buckled)
 					M.buckled.unbuckle_mob()
 
-				var/datum/effect/effect/system/spark_spread/sparks = new /datum/effect/effect/system/spark_spread()
-				sparks.set_up(3, 0, get_turf(M))
-				sparks.start()
+				new /obj/effect/particle_effect/sparks(get_turf(M))
+				//var/datum/effect/effect/system/spark_spread/sparks = new /datum/effect/effect/system/spark_spread()
+				//sparks.set_up(3, 0, get_turf(M))
+				//sparks.start()
 
-				M.Move(pick(trange(50, T)))
-				sparks = new /datum/effect/effect/system/spark_spread()
-				sparks.set_up(3, 0, M.loc)
-				sparks.start()
+				M.Move(pick(range(50, T)))
+
+				new /obj/effect/particle_effect/sparks(get_turf(M))
+
+				//sparks = new /datum/effect/effect/system/spark_spread()
+				//sparks.set_up(3, 0, M.loc)
+				//sparks.start()

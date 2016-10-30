@@ -260,3 +260,8 @@
 
 /obj/item/projectile/experience_pressure_difference()
 	return
+
+/obj/item/projectile/proc/get_structure_damage()
+	if(damage_type == BRUTE || damage_type == BURN)
+		return damage
+	return 0

@@ -22,9 +22,9 @@
 		"\green You feel a tingling sensation in your chest.",
 		"\green Your entire body vibrates.")
 		if(prob(75))
-			scramble(1, toucher, weakness * severity)
+			scramble_dna(toucher, 1, 0, weakness * severity)
 		else
-			scramble(0, toucher, weakness * severity)
+			scramble_dna(toucher, 0, 1, weakness * severity)
 	return 1
 
 /datum/artifact_effect/dnaswitch/DoEffectAura()
@@ -42,9 +42,9 @@
 					"\green You feel a tingling sensation in your chest.",
 					"\green Your entire body vibrates.")
 				if(prob(50))
-					scramble(1, H, weakness * severity)
+					scramble_dna(H, 1, 0, weakness * severity)
 				else
-					scramble(0, H, weakness * severity)
+					scramble_dna(H, 0, 1, weakness * severity)
 
 /datum/artifact_effect/dnaswitch/DoEffectPulse()
 	if(holder)
@@ -62,6 +62,6 @@
 					"\green Your entire body vibrates.")
 				if(prob(25))
 					if(prob(75))
-						scramble(1, H, weakness * severity)
+						scramble_dna(H, 1, 0, weakness * severity)
 					else
-						scramble(0, H, weakness * severity)
+						scramble_dna(H, 0, 1, weakness * severity)

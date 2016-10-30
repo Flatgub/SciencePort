@@ -90,6 +90,9 @@
 	var/list/digsound = list('sound/effects/picaxe1.ogg','sound/effects/picaxe2.ogg','sound/effects/picaxe3.ogg')
 	origin_tech = "materials=2;engineering=3"
 	attack_verb = list("hit", "pierced", "sliced", "attacked")
+	var/drill_sound = 'sound/weapons/Genhit.ogg'
+	var/drill_verb = "drilling"
+	var/excavation_amount = 200
 
 /obj/item/weapon/pickaxe/mini
 	name = "compact pickaxe"

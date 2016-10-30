@@ -5,7 +5,7 @@
 	icon_state = "suspension2"
 	density = 1
 	req_access = list(access_research)
-	var/obj/item/weapon/cell/cell
+	var/obj/item/weapon/stock_parts/cell/cell
 	var/obj/item/weapon/card/id/auth_card
 	var/locked = 1
 	var/power_use = 5
@@ -13,7 +13,7 @@
 
 /obj/machinery/suspension_gen/New()
 	..()
-	src.cell = new /obj/item/weapon/cell/high(src)
+	src.cell = new /obj/item/weapon/stock_parts/cell/high(src)
 
 /obj/machinery/suspension_gen/process()
 	if(suspension_field)
@@ -196,7 +196,7 @@
 		suspension_field.overlays += "shield2"
 		src.visible_message("\blue \icon[suspension_field] [suspension_field] gently absconds [collected > 1 ? "something" : "several things"].")
 	else
-		if(istype(T,/turf/simulated/mineral) || istype(T,/turf/simulated/wall))
+		if(istype(T,/turf/closed/mineral) || istype(T,/turf/simulated/wall))
 			suspension_field.icon_state = "shieldsparkles"
 		else
 			suspension_field.icon_state = "shield2"

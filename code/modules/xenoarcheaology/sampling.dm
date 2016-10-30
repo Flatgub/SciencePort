@@ -3,8 +3,8 @@
 	desc = "It looks extremely delicate."
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "sliver1"
-	w_class = ITEMSIZE_TINY
-	sharp = 1
+	//w_class = ITEMSIZE_TINY
+	//sharp = 1
 	var/datum/geosample/geological_data
 
 /obj/item/weapon/rocksliver/New()
@@ -22,10 +22,10 @@
 	var/source_mineral = "chlorine"
 	var/list/find_presence = list()
 
-/datum/geosample/New(var/turf/simulated/mineral/container)
+/datum/geosample/New(var/turf/closed/mineral/container)
 	UpdateTurf(container)
 
-/datum/geosample/proc/UpdateTurf(var/turf/simulated/mineral/container)
+/datum/geosample/proc/UpdateTurf(var/turf/closed/mineral/container)
 	if(!istype(container))
 		return
 
@@ -62,7 +62,7 @@
 	for(var/carrier in find_presence)
 		find_presence[carrier] = find_presence[carrier] / total_presence
 
-/datum/geosample/proc/UpdateNearbyArtifactInfo(var/turf/simulated/mineral/container)
+/datum/geosample/proc/UpdateNearbyArtifactInfo(var/turf/closed/mineral/container)
 	if(!container || !istype(container))
 		return
 
@@ -70,15 +70,15 @@
 		artifact_distance = rand()
 		artifact_id = container.artifact_find.artifact_id
 	else
-		if(master_controller) //Sanity check due to runtimes ~Z
-			for(var/turf/simulated/mineral/T in master_controller.artifact_spawning_turfs)
-				if(T.artifact_find)
-					var/cur_dist = get_dist(container, T) * 2
-					if( (artifact_distance < 0 || cur_dist < artifact_distance))
-						artifact_distance = cur_dist + rand() * 2 - 1
-						artifact_id = T.artifact_find.artifact_id
-				else
-					master_controller.artifact_spawning_turfs.Remove(T)
+	//	if(master_controller) //Sanity check due to runtimes ~Z --[RETURN TO LATER]--
+	//		for(var/turf/closed/mineral/T in master_controller.artifact_spawning_turfs)
+	//			if(T.artifact_find)
+	//				var/cur_dist = get_dist(container, T) * 2
+	//				if( (artifact_distance < 0 || cur_dist < artifact_distance))
+	//					artifact_distance = cur_dist + rand() * 2 - 1
+	//					artifact_id = T.artifact_find.artifact_id
+	//			else
+	//				master_controller.artifact_spawning_turfs.Remove(T)
 
 /obj/item/device/core_sampler
 	name = "core sampler"
@@ -113,8 +113,8 @@
 /obj/item/device/core_sampler/proc/sample_item(var/item_to_sample, var/mob/user)
 	var/datum/geosample/geo_data
 
-	if(istype(item_to_sample, /turf/simulated/mineral))
-		var/turf/simulated/mineral/T = item_to_sample
+	if(istype(item_to_sample, /turf/closed/mineral))
+		var/turf/closed/mineral/T = item_to_sample
 		T.geologic_data.UpdateNearbyArtifactInfo(T)
 		geo_data = T.geologic_data
 	else if(istype(item_to_sample, /obj/item/weapon/ore))
@@ -144,7 +144,7 @@
 			var/image/I = image("icon"=R, "layer"=FLOAT_LAYER)
 			filled_bag.overlays += I
 			filled_bag.overlays += "evidence"
-			filled_bag.w_class = ITEMSIZE_TINY
+			//filled_bag.w_class = ITEMSIZE_TINY
 
 			user << "<span class='notice'>You take a core sample of the [item_to_sample].</span>"
 	else

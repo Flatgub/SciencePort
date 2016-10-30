@@ -54,12 +54,12 @@
 /obj/structure/closet/secure_closet/xenoarchaeologist
 	name = "Xenoarchaeologist Locker"
 	req_access = list(access_tox_storage)
-	icon_state = "secureres1"
-	icon_closed = "secureres"
-	icon_locked = "secureres1"
-	icon_opened = "secureresopen"
-	icon_broken = "secureresbroken"
-	icon_off = "secureresoff"
+	icon_state = "ce"
+	//icon_closed = "secureres"
+	//icon_locked = "secureres1"
+	//icon_opened = "secureresopen"
+	//icon_broken = "secureresbroken"
+	//icon_off = "secureresoff"
 
 /obj/structure/closet/secure_closet/xenoarchaeologist/New()
 	..()
@@ -73,9 +73,8 @@
 
 /obj/structure/closet/excavation
 	name = "Excavation tools"
-	icon_state = "toolcloset"
-	icon_closed = "toolcloset"
-	icon_opened = "toolclosetopen"
+	icon_state = "eng"
+	icon_door = "eng_tool"
 
 /obj/structure/closet/excavation/New()
 	..()

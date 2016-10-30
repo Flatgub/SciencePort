@@ -15,7 +15,7 @@
 			H.drowsyness = min(H.drowsyness + rand(5,25) * weakness, 50 * weakness)
 			H.eye_blurry = min(H.eye_blurry + rand(1,3) * weakness, 50 * weakness)
 			return 1
-		else if(isrobot(toucher))
+		else if(iscyborg(toucher))
 			toucher << "\red SYSTEM ALERT: CPU cycles slowing down."
 			return 1
 

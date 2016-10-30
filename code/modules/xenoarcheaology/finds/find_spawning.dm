@@ -57,11 +57,11 @@
 		if(3)
 			item_type = "[pick("fork","spoon","knife")]"
 			if(prob(25))
-				new_item = new /obj/item/weapon/material/kitchen/utensil/fork(src.loc)
-			else if(prob(50))
-				new_item = new /obj/item/weapon/material/kitchen/utensil/knife(src.loc)
-			else
-				new_item = new /obj/item/weapon/material/kitchen/utensil/spoon(src.loc)
+				new_item = new /obj/item/weapon/kitchen/fork(src.loc)
+			else //if(prob(50))
+				new_item = new /obj/item/weapon/kitchen/knife(src.loc)
+			//else
+			//	new_item = new /obj/item/weapon/kitchen/spoon(src.loc) -- Spoons dont exist in /tg/
 			additional_desc = "[pick("It's like no [item_type] you've ever seen before",\
 			"It's a mystery how anyone is supposed to eat with this",\
 			"You wonder what the creator's mouth was shaped like")]."
@@ -88,7 +88,7 @@
 				"You wonder what kind of music was made with it")]."
 		if(6)
 			item_type = "[pick("bladed knife","serrated blade","sharp cutting implement")]"
-			new_item = new /obj/item/weapon/material/knife(src.loc)
+			new_item = new /obj/item/weapon/knife(src.loc)
 			additional_desc = "[pick("It doesn't look safe.",\
 			"It looks wickedly jagged",\
 			"There appear to be [pick("dark red","dark purple","dark green","dark blue")] stains along the edges")]."
@@ -107,18 +107,18 @@
 			apply_image_decorations = 1
 		if(8)
 			item_type = "handcuffs"
-			new_item = new /obj/item/weapon/handcuffs(src.loc)
+			new_item = new /obj/item/weapon/restraints/handcuffs(src.loc)
 			additional_desc = "[pick("They appear to be for securing two things together","Looks kinky","Doesn't seem like a children's toy")]."
 		if(9)
 			item_type = "[pick("wicked","evil","byzantine","dangerous")] looking [pick("device","contraption","thing","trap")]"
 			apply_prefix = 0
-			new_item = new /obj/item/weapon/beartrap(src.loc)
+			new_item = new /obj/item/weapon/restraints/legcuffs/beartrap(src.loc)
 			additional_desc = "[pick("It looks like it could take a limb off",\
 			"Could be some kind of animal trap",\
 			"There appear to be [pick("dark red","dark purple","dark green","dark blue")] stains along part of it")]."
 		if(10)
 			item_type = "[pick("cylinder","tank","chamber")]"
-			new_item = new /obj/item/weapon/flame/lighter(src.loc)
+			new_item = new /obj/item/weapon/lighter(src.loc)
 			additional_desc = "There is a tiny device attached."
 			if(prob(30))
 				apply_image_decorations = 1
@@ -136,11 +136,11 @@
 		if(12)
 			item_type = "[pick("cylinder","tank","chamber")]"
 			if(prob(25))
-				new_item = new /obj/item/weapon/tank/air(src.loc)
+				new_item = new /obj/item/weapon/tank/internals/air(src.loc)
 			else if(prob(50))
-				new_item = new /obj/item/weapon/tank/anesthetic(src.loc)
+				new_item = new /obj/item/weapon/tank/internals/anesthetic(src.loc)
 			else
-				new_item = new /obj/item/weapon/tank/phoron(src.loc)
+				new_item = new /obj/item/weapon/tank/internals/plasma(src.loc)
 			icon_state = pick("oxygen","oxygen_fr","oxygen_f","phoron","anesthetic")
 			additional_desc = "It [pick("gloops","sloshes")] slightly when you shake it."
 		if(13)
@@ -157,16 +157,16 @@
 		if(14)
 			apply_material_decorations = 0
 			var/list/possible_spawns = list()
-			possible_spawns += /obj/item/stack/material/steel
-			possible_spawns += /obj/item/stack/material/plasteel
-			possible_spawns += /obj/item/stack/material/glass
-			possible_spawns += /obj/item/stack/material/glass/reinforced
-			possible_spawns += /obj/item/stack/material/phoron
-			possible_spawns += /obj/item/stack/material/gold
-			possible_spawns += /obj/item/stack/material/silver
-			possible_spawns += /obj/item/stack/material/uranium
-			possible_spawns += /obj/item/stack/material/sandstone
-			possible_spawns += /obj/item/stack/material/silver
+			possible_spawns += /obj/item/stack/sheet/metal
+			possible_spawns += /obj/item/stack/sheet/plasteel
+			possible_spawns += /obj/item/stack/sheet/glass
+			possible_spawns += /obj/item/stack/sheet/rglass
+			possible_spawns += /obj/item/stack/sheet/mineral/plasma
+			possible_spawns += /obj/item/stack/sheet/mineral/gold
+			possible_spawns += /obj/item/stack/sheet/mineral/silver
+			possible_spawns += /obj/item/stack/sheet/mineral/uranium
+			possible_spawns += /obj/item/stack/sheet/mineral/sandstone
+			possible_spawns += /obj/item/stack/sheet/mineral/silver
 
 			var/new_type = pick(possible_spawns)
 			new_item = new new_type(src.loc)
@@ -175,7 +175,7 @@
 			if(prob(75))
 				new_item = new /obj/item/weapon/pen(src.loc)
 			else
-				new_item = new /obj/item/weapon/pen/reagent/sleepy(src.loc)
+				new_item = new /obj/item/weapon/pen/sleepy(src.loc)
 			if(prob(30))
 				apply_image_decorations = 1
 		if(16)
@@ -215,16 +215,16 @@
 			new_item.desc = ""
 		if(19)
 			apply_prefix = 0
-			new_item = new /obj/item/weapon/material/sword(src.loc)
+			new_item = new /obj/item/weapon/katana(src.loc)
 			new_item.force = 10
 			item_type = new_item.name
 		if(20)
 			//arcane clothing
 			apply_prefix = 0
 			var/list/possible_spawns = list(/obj/item/clothing/head/culthood,
-			/obj/item/clothing/head/culthood/magus,
-			/obj/item/clothing/head/culthood/alt,
-			/obj/item/clothing/head/helmet/space/cult)
+			///obj/item/clothing/head/culthood/magus,
+			/obj/item/clothing/head/culthood/alt)
+			///obj/item/clothing/head/helmet/space/cult)
 
 			var/new_type = pick(possible_spawns)
 			new_item = new new_type(src.loc)
@@ -258,7 +258,7 @@
 			apply_material_decorations = 0
 		if(25)
 			apply_prefix = 0
-			new_item = new /obj/item/weapon/material/sword/katana(src.loc)
+			new_item = new /obj/item/weapon/katana(src.loc)
 			new_item.force = 10
 			item_type = new_item.name
 		if(26)

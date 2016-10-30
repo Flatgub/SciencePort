@@ -60,7 +60,7 @@
 /datum/artifact_effect/proc/DoEffectPulse(var/atom/holder)
 /datum/artifact_effect/proc/UpdateMove()
 
-/datum/artifact_effect/proc/process()
+/datum/artifact_effect/process()
 	if(chargelevel < chargelevelmax)
 		chargelevel++
 
@@ -123,10 +123,10 @@
 	var/protected = 0
 
 	//anomaly suits give best protection, but excavation suits are almost as good
-	if(istype(H.back,/obj/item/weapon/rig/hazmat))
-		var/obj/item/weapon/rig/hazmat/rig = H.back
-		if(rig.suit_is_deployed() && !rig.offline)
-			protected += 1
+//	if(istype(H.back,/obj/item/weapon/rig/hazmat))
+//		var/obj/item/weapon/rig/hazmat/rig = H.back
+//		if(rig.suit_is_deployed() && !rig.offline)
+//			protected += 1
 
 	if(istype(H.wear_suit,/obj/item/clothing/suit/bio_suit/anomaly))
 		protected += 0.6
@@ -139,7 +139,10 @@
 		protected += 0.2
 
 	//latex gloves and science goggles also give a bit of bonus protection
-	if(istype(H.gloves,/obj/item/clothing/gloves/latex))
+	if(istype(H.gloves,/obj/item/clothing/gloves/color/latex))
+		protected += 0.1
+
+	if(istype(H.gloves,/obj/item/clothing/gloves/color/latex/nitrile))
 		protected += 0.1
 
 	if(istype(H.glasses,/obj/item/clothing/glasses/science))
