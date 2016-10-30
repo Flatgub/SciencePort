@@ -23,6 +23,7 @@
 	var/last_act = 0
 	var/scan_state = null //Holder for the image we display when we're pinged by a mining scanner
 	var/defer_change = 0
+	var/list/finds
 
 /turf/closed/mineral/New()
 	pixel_y = -4

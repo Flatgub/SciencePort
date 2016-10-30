@@ -287,7 +287,7 @@
 					new_gun.power_supply.charge = 0
 
 			item_type = "gun"
-		if(27)
+		/*if(27) --[RETURN TO LATER]--
 			//revolver
 			var/obj/item/weapon/gun/projectile/new_gun = new /obj/item/weapon/gun/projectile/revolver(src.loc)
 			new_item = new_gun
@@ -321,7 +321,7 @@
 						new_gun.loaded.Remove(I)
 						I.loc = null
 
-			item_type = "gun"
+			item_type = "gun" */
 		if(28)
 			//completely unknown alien device
 			if(prob(50))

@@ -65,7 +65,7 @@
 		var/nearestSimpleTargetDist = -1
 		var/turf/cur_turf = get_turf(src)
 
-		if(master_controller) //Sanity check due to runtimes ~Z
+		/*if(master_controller) //Sanity check due to runtimes ~Z --[RETURN TO LATER]--
 			for(var/A in master_controller.artifact_spawning_turfs)
 				var/turf/closed/mineral/T = A
 				if(T.density && T.artifact_find)
@@ -85,7 +85,7 @@
 						if(nearestSimpleTargetDist < 0 || cur_dist < nearestSimpleTargetDist)
 							nearestSimpleTargetDist = cur_dist + rand() * 2 - 1
 				else
-					master_controller.digsite_spawning_turfs.Remove(T)
+					master_controller.digsite_spawning_turfs.Remove(T)*/
 
 		if(nearestTargetDist >= 0)
 			user << "Exotic energy detected on wavelength '[nearestTargetId]' in a radius of [nearestTargetDist]m[nearestSimpleTargetDist > 0 ? "; small anomaly detected in a radius of [nearestSimpleTargetDist]m" : ""]"

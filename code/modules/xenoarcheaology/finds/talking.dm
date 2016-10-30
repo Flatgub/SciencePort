@@ -16,7 +16,7 @@
 		//START_PROCESSING(SSobj, src)
 		START_PROCESSING(SSobj, src)
 
-/datum/talking_atom/proc/process()
+/datum/talking_atom/process()
 	if(!holder_atom)
 		//STOP_PROCESSING(SSobj, src)
 		STOP_PROCESSING(SSobj, src)
